@@ -311,6 +311,10 @@ em {
   letter-spacing: -.02em;
 }
 
+.hero-h1 span {
+  color: var(--dark);
+}
+
 .hero-meta {
   margin-top: 64px;
   display: flex;

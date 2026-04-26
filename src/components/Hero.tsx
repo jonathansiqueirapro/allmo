@@ -17,7 +17,7 @@ export function Hero() {
         <div className={`hero-left reveal ${leftVisible ? 'is-visible' : ''}`} ref={leftRef}>
           <span className="hero-eyebrow">Consultoria de Privacy Ops</span>
           <h1 className="hero-h1">
-            Privacidade estruturada para fortalecer o seu negócio.
+            Privacidade estruturada <span>para fortalecer o seu negócio.</span>
           </h1>
           <div className="hero-meta">
             <p className="hero-sub">
