@@ -1,3 +1,5 @@
+import { assetPath } from '../utils/asset';
+
 export function Nav() {
   return (
     <nav className="site-nav" aria-label="Navegação principal">
@@ -5,7 +7,7 @@ export function Nav() {
         <a className="brand" href="#hero" aria-label="Allmo">
           <img
             className="brand-logo"
-            src="/assets/logos/allmo-rgb.png"
+            src={assetPath('assets/logos/allmo-rgb.png')}
             alt="Allmo"
             width="112"
             height="auto"

@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { assetPath } from '../utils/asset';
 
 const stats = [
   { value: '73%', text: 'das empresas sancionadas tinham políticas vigentes — mas sem operação real' },
@@ -30,7 +31,7 @@ export function Hero() {
         </div>
 
         <div className={`hero-right reveal delay-1 ${rightVisible ? 'is-visible' : ''}`} ref={rightRef}>
-          <img className="hero-image" src="/assets/imagens/hero.png?v=2" alt="Visual institucional da Allmo" />
+          <img className="hero-image" src={assetPath('assets/imagens/hero.png?v=2')} alt="Visual institucional da Allmo" />
         </div>
       </div>
 

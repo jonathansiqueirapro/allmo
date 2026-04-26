@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { assetPath } from '../utils/asset';
 
 const pillars = [
   { title: 'Governança', description: 'Estrutura decisória clara, papéis definidos e responsabilidade institucional ativa.' },
@@ -26,7 +27,7 @@ export function Methodology() {
           </div>
         </div>
         <div className={`framework-visual reveal delay-1 ${rightVisible ? 'is-visible' : ''}`} ref={rightRef}>
-          <img className="framework-image" src="/assets/imagens/framework.png" alt="Framework Allmo" />
+          <img className="framework-image" src={assetPath('assets/imagens/framework.png')} alt="Framework Allmo" />
         </div>
       </div>
       <div className={`meto-right reveal delay-1 ${rightVisible ? 'is-visible' : ''}`}>

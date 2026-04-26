@@ -1,25 +1,26 @@
 import { useReveal } from '../hooks/useReveal';
+import { assetPath } from '../utils/asset';
 
 const articles = [
   {
     tag: 'LGPD Operacional',
     title: 'O que diferencia uma operação de privacidade de um documento de compliance',
     readingTime: 'Leitura: 5 min',
-    image: '/assets/imagens/lgpd.png',
+    image: 'assets/imagens/lgpd.png',
     alt: 'Referência visual para artigo sobre LGPD operacional',
   },
   {
     tag: 'IA & Privacidade',
     title: 'Privacy by Design para times de inteligência artificial: guia executivo',
     readingTime: 'Leitura: 7 min',
-    image: '/assets/imagens/ia-privacidade.png',
+    image: 'assets/imagens/ia-privacidade.png',
     alt: 'Referência visual para artigo sobre IA e privacidade',
   },
   {
     tag: 'Governança',
     title: 'Como estruturar uma Comissão de Privacidade que gera consenso executivo',
     readingTime: 'Leitura: 6 min',
-    image: '/assets/imagens/governanca.png',
+    image: 'assets/imagens/governanca.png',
     alt: 'Referência visual para artigo sobre governança de dados',
   },
 ];
@@ -41,7 +42,7 @@ export function Content() {
         {articles.map((article) => (
           <article className="content-card" key={article.title}>
             <div className="content-image">
-              <img src={article.image} alt={article.alt} />
+                <img src={assetPath(article.image)} alt={article.alt} />
             </div>
             <div className="content-body">
               <span className="content-tag">{article.tag}</span>

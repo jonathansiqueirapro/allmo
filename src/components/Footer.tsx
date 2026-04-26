@@ -1,3 +1,5 @@
+import { assetPath } from '../utils/asset';
+
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -6,7 +8,7 @@ export function Footer() {
           <a className="brand" href="#hero" aria-label="Allmo">
             <img
               className="brand-logo"
-              src="/assets/logos/allmo-rgb.png"
+              src={assetPath('assets/logos/allmo-rgb.png')}
               alt="Allmo"
               width="112"
               height="auto"
