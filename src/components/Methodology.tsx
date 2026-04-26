@@ -1,36 +1,41 @@
 import { useReveal } from '../hooks/useReveal';
 
 const pillars = [
-  { number: '01', title: 'Diagnóstico', description: 'Mapeamento de maturidade, gaps e riscos operacionais.' },
-  { number: '02', title: 'Estruturação', description: 'Políticas, processos e comissão de privacidade ativada.' },
-  { number: '03', title: 'Integração', description: 'Alinhamento jurídico, técnico e executivo em uma operação.' },
-  { number: '04', title: 'Mensuração', description: 'Data Protection Score (DPS) como métrica de evolução contínua.' },
-  { number: '05', title: 'Evolução', description: 'Ciclo contínuo de revisão, adaptação e crescimento de maturidade.' },
+  { title: 'Governança', description: 'Estrutura decisória clara, papéis definidos e responsabilidade institucional ativa.' },
+  { title: 'Processos', description: 'Rotinas operacionais que sustentam auditoria, contratos, incidentes e evolução contínua.' },
+  { title: 'Tecnologia', description: 'Controles, inventários e evidências conectados ao funcionamento real do negócio.' },
+  { title: 'Jurídico', description: 'Rigor regulatório aplicado sem isolar a privacidade da operação e da estratégia.' },
+  { title: 'Educacional', description: 'Cultura, treinamento e comunicação para transformar privacidade em prática recorrente.' },
 ];
 
 export function Methodology() {
-  const { ref: introRef, isVisible: introVisible } = useReveal();
-  const { ref: pillarsRef, isVisible: pillarsVisible } = useReveal();
+  const { ref: leftRef, isVisible: leftVisible } = useReveal();
+  const { ref: rightRef, isVisible: rightVisible } = useReveal();
 
   return (
-    <section className="methodology" id="metodologia">
-      <div className="container">
-        <div className={`methodology-intro reveal ${introVisible ? 'is-visible' : ''}`} ref={introRef}>
-          <div>
-            <p className="eyebrow">Metodologia</p>
-            <h2>Framework de Governança Allmo. Cinco pilares. Uma operação que mede sua própria evolução.</h2>
-          </div>
-          <p className="lead">Nossa metodologia não depende de pessoas específicas — depende de estrutura. Cada pilar alimenta o próximo, criando um ciclo de maturidade contínua e mensurável.</p>
+    <section className="methodology" id="meto">
+      <div className={`meto-left reveal ${leftVisible ? 'is-visible' : ''}`} ref={leftRef}>
+        <div>
+          <span className="meto-eyebrow">Framework Allmo</span>
+          <h2 className="meto-h">
+            Pensamento aplicado em privacidade e governança.
+          </h2>
+          <p className="meto-p">Cinco pilares que transformam conformidade em capacidade operacional real — auditável, contínua e integrada ao negócio.</p>
+          <a href="#diferencial" className="btn-teal">Conhecer a Metodologia →</a>
         </div>
-        <div className={`pillars reveal ${pillarsVisible ? 'is-visible' : ''}`} ref={pillarsRef}>
+      </div>
+      <div className={`meto-right reveal delay-1 ${rightVisible ? 'is-visible' : ''}`} ref={rightRef}>
+        <ul className="pilares">
           {pillars.map((pillar, index) => (
-            <article className="pillar" key={index}>
-              <p className="pillar-number">{pillar.number}</p>
-              <h3>{pillar.title}</h3>
-              <p>{pillar.description}</p>
-            </article>
+            <li className="pilar" key={pillar.title}>
+              <span className="pilar-n">{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <div className="pilar-name">{pillar.title}</div>
+                <div className="pilar-desc">{pillar.description}</div>
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

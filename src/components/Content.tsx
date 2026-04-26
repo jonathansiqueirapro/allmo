@@ -1,7 +1,6 @@
-import { useRef, useState, useCallback } from 'react';
 import { useReveal } from '../hooks/useReveal';
 
-const contentCards = [
+const articles = [
   {
     tag: 'LGPD Operacional',
     title: 'O que diferencia uma operação de privacidade de um documento de compliance',
@@ -28,76 +27,29 @@ const contentCards = [
 export function Content() {
   const { ref: headerRef, isVisible: headerVisible } = useReveal();
   const { ref: gridRef, isVisible: gridVisible } = useReveal();
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const updateScrollButtons = useCallback((container: HTMLDivElement) => {
-    setCanScrollLeft(container.scrollLeft > 0);
-    setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 1);
-  }, []);
-
-  const scroll = useCallback((direction: 'left' | 'right') => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const cardWidth = container.querySelector('.content-card')?.clientWidth || 300;
-    const gap = 18;
-    const scrollAmount = cardWidth + gap;
-
-    const newPosition = direction === 'left'
-      ? Math.max(0, container.scrollLeft - scrollAmount)
-      : Math.min(container.scrollWidth - container.clientWidth, container.scrollLeft + scrollAmount);
-
-    container.scrollTo({ left: newPosition, behavior: 'smooth' });
-  }, []);
 
   return (
-    <section className="soft-section" id="conteudo">
-      <div className="container">
-        <div className={`content-header reveal ${headerVisible ? 'is-visible' : ''}`} ref={headerRef}>
-          <div>
-            <p className="eyebrow">Conteúdo</p>
-            <h2>Pensamento aplicado<br />em privacidade e governança.</h2>
-          </div>
-          <div className="content-nav">
-            <button
-              className="arrow-btn"
-              onClick={() => scroll('left')}
-              disabled={!canScrollLeft}
-              aria-label="Anterior"
-            >
-              ←
-            </button>
-            <button
-              className="arrow-btn"
-              onClick={() => scroll('right')}
-              disabled={!canScrollRight}
-              aria-label="Próximo"
-            >
-              →
-            </button>
-            <a className="view-all" href="#conteudo">Ver todos →</a>
-          </div>
+    <section className="content-section" id="conteudo">
+      <div className={`content-header reveal ${headerVisible ? 'is-visible' : ''}`} ref={headerRef}>
+        <div>
+          <span className="sec-eyebrow">Conteúdo</span>
+          <h2 className="sec-h">Pensamento aplicado em privacidade e governança.</h2>
         </div>
-        <div
-          className={`content-grid reveal ${gridVisible ? 'is-visible' : ''}`}
-          ref={gridRef}
-          onScroll={(e) => updateScrollButtons(e.currentTarget)}
-        >
-          {contentCards.map((card, index) => (
-            <article className="content-card" key={index}>
-              <div className="content-image">
-                <img src={card.image} alt={card.alt} />
-              </div>
-              <div className="content-body">
-                <p className="tag">{card.tag}</p>
-                <h3>{card.title}</h3>
-                <p className="reading-time">{card.readingTime}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+        <p className="sec-p">Leituras executivas para quem precisa transformar obrigação regulatória em capacidade operacional.</p>
+      </div>
+      <div className={`content-grid reveal delay-1 ${gridVisible ? 'is-visible' : ''}`} ref={gridRef}>
+        {articles.map((article) => (
+          <article className="content-card" key={article.title}>
+            <div className="content-image">
+              <img src={article.image} alt={article.alt} />
+            </div>
+            <div className="content-body">
+              <span className="content-tag">{article.tag}</span>
+              <h3 className="content-title">{article.title}</h3>
+              <p className="content-time">{article.readingTime}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

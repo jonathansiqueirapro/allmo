@@ -1,63 +1,43 @@
 import { useReveal } from '../hooks/useReveal';
 
 const comparisonData = [
-  {
-    criteria: 'Entrega',
-    traditional: 'Documentos e relatórios',
-    allmo: 'Operação estruturada e contínua',
-  },
-  {
-    criteria: 'Responsável',
-    traditional: 'DPO isolado apagando incêndios',
-    allmo: 'Comissão de Privacidade com consenso executivo',
-  },
-  {
-    criteria: 'Integração',
-    traditional: 'Jurídico desconectado do negócio',
-    allmo: 'Rigor jurídico + agilidade de tecnologia',
-  },
-  {
-    criteria: 'Resultado',
-    traditional: 'Conformidade de gaveta',
-    allmo: 'Privacidade como ativo estratégico',
-  },
-  {
-    criteria: 'Medição',
-    traditional: 'Subjetiva ou ausente',
-    allmo: 'Data Protection Score (DPS) — maturidade mensurável',
-  },
+  { dimension: 'Entrega', traditional: 'Documentos', allmo: 'Estrutura operação' },
+  { dimension: 'Responsável', traditional: 'DPO isolado', allmo: 'Comissão de Privacidade ativa' },
+  { dimension: 'Resposta', traditional: 'Reativo a incidentes', allmo: 'Processo contínuo' },
+  { dimension: 'Maturidade', traditional: 'Adequação pontual', allmo: 'Evolui com o negócio' },
 ];
 
 export function Comparison() {
-  const { ref, isVisible } = useReveal();
+  const { ref: headerRef, isVisible: headerVisible } = useReveal();
+  const { ref: tableRef, isVisible: tableVisible } = useReveal();
 
   return (
-    <section>
-      <div className="container">
-        <div className={`section-center reveal ${isVisible ? 'is-visible' : ''}`} ref={ref}>
-          <p className="eyebrow">O que nos diferencia</p>
-          <h2>A conformidade no papel existe. A operação, não.</h2>
+    <section className="comparison" id="diferencial">
+      <div className={`sec-header reveal ${headerVisible ? 'is-visible' : ''}`} ref={headerRef}>
+        <div>
+          <h2 className="sec-h">A conformidade no papel existe. A operação, não.</h2>
         </div>
-        <div className={`comparison-wrap reveal ${isVisible ? 'is-visible' : ''}`}>
-          <table className="comparison-table">
-            <thead>
-              <tr>
-                <th>Critério</th>
-                <th>Compliance Tradicional</th>
-                <th>Privacy Ops Allmo</th>
+        <p className="sec-p">Compliance tradicional entrega evidência estática. Privacy Ops Allmo instala rotina, governança e evolução contínua.</p>
+      </div>
+      <div className={`comparison-wrap reveal delay-1 ${tableVisible ? 'is-visible' : ''}`} ref={tableRef}>
+        <table className="comparison-table">
+          <thead>
+            <tr>
+              <th>Critério</th>
+              <th>Compliance Tradicional</th>
+              <th>Privacy Ops · Allmo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonData.map((row) => (
+              <tr key={row.dimension}>
+                <td>{row.dimension}</td>
+                <td>{row.traditional}</td>
+                <td>{row.allmo}</td>
               </tr>
-            </thead>
-            <tbody>
-              {comparisonData.map((row, index) => (
-                <tr key={index}>
-                  <td>{row.criteria}</td>
-                  <td>{row.traditional}</td>
-                  <td>{row.allmo}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );

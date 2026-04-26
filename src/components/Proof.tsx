@@ -1,51 +1,52 @@
 import { useReveal } from '../hooks/useReveal';
 
-const proofCards = [
+const niches = [
   {
-    title: 'Institutos de Previdência',
-    paragraphs: [
-      'Gestão de dados de beneficiários em ambientes com obrigações públicas, controle externo e auditoria permanente.',
-      'Operações com alto volume de dados sensíveis, múltiplos entes reguladores e exigência de rastreabilidade total.',
-    ],
-  },
-  {
+    tag: 'Regulação específica',
     title: 'Conselhos Regionais',
-    paragraphs: [
-      'Governança de dados de profissionais registrados em autarquias federais com escopo nacional e pressão regulatória constante.',
-      'Ambientes com milhares de titulares ativos e estrutura de decisão distribuída.',
-    ],
+    text: 'Dezenas de milhares de profissionais sob regulação específica.',
   },
   {
+    tag: 'Proteção em escala',
+    title: 'Institutos de Previdência',
+    text: 'Obrigações de proteção de dados em escala.',
+  },
+  {
+    tag: 'Risco em tempo real',
     title: 'Startups de Inteligência Artificial',
-    paragraphs: [
-      'Privacidade integrada ao ciclo de desenvolvimento de produtos que processam dados sensíveis em escala.',
-      'Times de inovação que precisam avançar rápido sem comprometer conformidade regulatória ou a confiança dos usuários.',
-    ],
+    text: 'Times de inovação navegando risco regulatório em tempo real.',
   },
 ];
 
 export function Proof() {
-  const { ref: introRef, isVisible: introVisible } = useReveal();
+  const { ref: headerRef, isVisible: headerVisible } = useReveal();
   const { ref: gridRef, isVisible: gridVisible } = useReveal();
 
   return (
-    <section>
-      <div className="container">
-        <div className={`proof-intro reveal ${introVisible ? 'is-visible' : ''}`} ref={introRef}>
-          <h2>Especialistas em Governança de Dados.</h2>
-          <p className="lead">A Allmo atua em ambientes onde a complexidade regulatória e política exige mais do que documentos. Atuamos com sigilo absoluto — a confiança dos nossos clientes é inegociável.</p>
+    <section className="proof" id="prova">
+      <div className={`prova-header reveal ${headerVisible ? 'is-visible' : ''}`} ref={headerRef}>
+        <div>
+          <span className="sec-eyebrow">Atuação por nicho</span>
+          <h2 className="prova-h">
+            Atuamos onde<br />improvisar<br /><em>não é opção.</em>
+          </h2>
         </div>
-        <div className={`proof-grid reveal ${gridVisible ? 'is-visible' : ''}`} ref={gridRef}>
-          {proofCards.map((card, index) => (
-            <article className="proof-card" key={index}>
-              <h3>{card.title}</h3>
-              {card.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-              <span className="badge">Sigilo preservado</span>
-            </article>
-          ))}
-        </div>
+        <p className="prova-sub">
+          Operamos em ambientes de alta complexidade regulatória, onde improvisar não é opção. Por discrição contratual, não divulgamos clientes.
+        </p>
+      </div>
+      <div className={`proof-grid reveal delay-1 ${gridVisible ? 'is-visible' : ''}`} ref={gridRef}>
+        {niches.map((niche) => (
+          <article className="proof-card" key={niche.title}>
+            <span className="niche-tag">{niche.tag}</span>
+            <h3 className="niche-h">{niche.title}</h3>
+            <p className="niche-p">{niche.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="prova-footer">
+        <span className="lock">⟨/⟩</span>
+        <span className="prova-footer-t">Todos os clientes operam sob sigilo contratual absoluto. Nenhum logotipo é exibido por compromisso de confidencialidade.</span>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div>
-          <a className="brand" href="#top" aria-label="Allmo">
+          <a className="brand" href="#hero" aria-label="Allmo">
             <img
               className="brand-logo"
               src="/assets/logos/allmo-rgb.png"
@@ -13,7 +13,7 @@ export function Footer() {
             />
           </a>
           <p className="footer-brand-text">Governança além da Lei. Consultoria de Privacy Ops.</p>
-          <p className="footer-contact">contato@allmo.co<br />Campo Grande / MS</p>
+          <p className="footer-contact">contato@allmo.co · Campo Grande / MS</p>
         </div>
         <div>
           <p className="footer-title">Soluções</p>
@@ -28,25 +28,21 @@ export function Footer() {
         <div>
           <p className="footer-title">Empresa</p>
           <div className="footer-links">
-            <a href="#metodologia">Metodologia</a>
+            <a href="#diferencial">Metodologia</a>
+            <a href="#cta">Diagnóstico</a>
             <a href="#conteudo">Conteúdo</a>
-            <a href="#top">Sobre</a>
-            <a href="#diagnostico">Iniciar Diagnóstico</a>
           </div>
         </div>
         <div>
           <p className="footer-title">Utilidade pública</p>
           <div className="footer-links">
-            <a href="#top">Central do Titular</a>
+            <a href="#hero">Central do Titular</a>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
-        <span>2026 Allmo — Governança além da Lei</span>
-        <span className="footer-bottom-links">
-          <a href="#top">Política de Privacidade</a>
-          <a href="#top">Central do Titular</a>
-        </span>
+        <span>© 2026 Allmo · Governança além da Lei</span>
+        <a href="#hero">Política de Privacidade</a>
       </div>
     </footer>
   );
