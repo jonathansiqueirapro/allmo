@@ -14,17 +14,22 @@ export function Methodology() {
 
   return (
     <section className="methodology" id="meto">
-      <div className={`meto-left reveal ${leftVisible ? 'is-visible' : ''}`} ref={leftRef}>
-        <div>
-          <span className="meto-eyebrow">Framework Allmo</span>
-          <h2 className="meto-h">
-            Pensamento aplicado em privacidade e governança.
-          </h2>
-          <p className="meto-p">Cinco pilares que transformam conformidade em capacidade operacional real — auditável, contínua e integrada ao negócio.</p>
-          <a href="#diferencial" className="btn-teal">Conhecer a Metodologia →</a>
+      <div className="meto-main">
+        <div className={`meto-left reveal ${leftVisible ? 'is-visible' : ''}`} ref={leftRef}>
+          <div>
+            <span className="meto-eyebrow">Framework Allmo</span>
+            <h2 className="meto-h">
+              Pensamento aplicado em privacidade e governança.
+            </h2>
+            <p className="meto-p">Cinco pilares que transformam conformidade em capacidade operacional real — auditável, contínua e integrada ao negócio.</p>
+            <a href="#diferencial" className="btn-teal">Conhecer a Metodologia →</a>
+          </div>
+        </div>
+        <div className={`framework-visual reveal delay-1 ${rightVisible ? 'is-visible' : ''}`} ref={rightRef}>
+          <img className="framework-image" src="/assets/imagens/framework.png" alt="Framework Allmo" />
         </div>
       </div>
-      <div className={`meto-right reveal delay-1 ${rightVisible ? 'is-visible' : ''}`} ref={rightRef}>
+      <div className={`meto-right reveal delay-1 ${rightVisible ? 'is-visible' : ''}`}>
         <ul className="pilares">
           {pillars.map((pillar, index) => (
             <li className="pilar" key={pillar.title}>

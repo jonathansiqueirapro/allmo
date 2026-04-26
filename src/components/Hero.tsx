@@ -30,7 +30,7 @@ export function Hero() {
         </div>
 
         <div className={`hero-right reveal delay-1 ${rightVisible ? 'is-visible' : ''}`} ref={rightRef}>
-          <img className="hero-image" src="/assets/imagens/hero.png" alt="Visual institucional da Allmo" />
+          <img className="hero-image" src="/assets/imagens/hero.png?v=2" alt="Visual institucional da Allmo" />
         </div>
       </div>
 
