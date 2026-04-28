@@ -2,34 +2,42 @@ import { useReveal } from '../hooks/useReveal';
 
 const solutions = [
   {
-    stage: '01 · Fundação',
-    title: 'Programa de Privacidade',
-    forWhom: 'Para organizações que precisam construir a estrutura de governança desde o início.',
-    text: 'Governança estruturada desde a base: processos, responsabilidades, evidências e rotina operacional.',
+    pillar: 'Governança de dados',
+    text: 'Estruture responsabilidade, processos e evidências para sustentar decisões sobre dados com clareza.',
+    items: [
+      {
+        title: 'Programa de Privacidade',
+        description: 'Governança estruturada desde a base: processos, responsabilidades, evidências e rotina operacional.',
+      },
+    ],
   },
   {
-    stage: '02 · Operação diária',
-    title: 'DPO Core',
-    forWhom: 'Terceirização da operação diária com suporte direto à Comissão de Privacidade.',
-    text: 'DPO operando no cotidiano da organização, com rotina, consenso executivo e apoio técnico contínuo.',
+    pillar: 'Data Protection Officer (DPO)',
+    text: 'Operação diária, retaguarda técnica e privacidade by design para organizações em diferentes estágios.',
+    items: [
+      {
+        title: 'DPO Core',
+        description: 'DPO operando no cotidiano da organização, com rotina, consenso executivo e apoio técnico contínuo.',
+      },
+      {
+        title: 'DPO for AI Builders',
+        description: 'Privacidade by design para produtos, modelos e operações que precisam avançar sem acumular risco regulatório.',
+      },
+      {
+        title: 'DPO Consultivo',
+        description: 'Apoio especializado para decisões críticas, revisão de fluxos, contratos e condução de temas sensíveis.',
+      },
+    ],
   },
   {
-    stage: '03 · Inovação',
-    title: 'DPO for AI Builders',
-    forWhom: 'Para times de inovação que lidam com IA e dados sensíveis.',
-    text: 'Privacidade by design para produtos, modelos e operações que precisam avançar sem acumular risco regulatório.',
-  },
-  {
-    stage: '04 · Retaguarda',
-    title: 'DPO Consultivo',
-    forWhom: 'Retaguarda técnica para PMOs e DPOs internos.',
-    text: 'Apoio especializado para decisões críticas, revisão de fluxos, contratos e condução de temas sensíveis.',
-  },
-  {
-    stage: '05 · Evidência',
-    title: 'AllAudit',
-    forWhom: 'Diagnóstico de conformidade para contratos B2B e due diligence.',
-    text: 'Auditoria orientada a prova, risco e maturidade para operações que precisam demonstrar conformidade com clareza.',
+    pillar: 'Asseguração',
+    text: 'Diagnóstico, prova e maturidade para operações que precisam demonstrar conformidade com segurança.',
+    items: [
+      {
+        title: 'ALLMO AUDIT',
+        description: 'Auditoria orientada a prova, risco e maturidade para contratos B2B e due diligence.',
+      },
+    ],
   },
 ];
 
@@ -50,12 +58,22 @@ export function Solutions() {
       </div>
       <div className={`solutions-grid reveal delay-1 ${gridVisible ? 'is-visible' : ''}`} ref={gridRef}>
         {solutions.map((solution) => (
-          <article className={`solution-card${solution.title === 'AllAudit' ? ' solution-card-allaudit' : ''}`} key={solution.title}>
-            <span className="sol-n">{solution.stage}</span>
-            <h3 className="sol-h">{solution.title}</h3>
-            <p className="sol-for">{solution.forWhom}</p>
-            <p className="sol-p">{solution.text}</p>
-            <a href="#cta" className="sol-lnk">Conhecer →</a>
+          <article className="solution-pillar" key={solution.pillar}>
+            <div className="solution-pillar-head">
+              <h3 className="sol-h">{solution.pillar}</h3>
+              <p className="sol-p">{solution.text}</p>
+            </div>
+            <div className="solution-items">
+              {solution.items.map((item) => (
+                <a href="#cta" className="solution-item" key={item.title}>
+                  <span>
+                    <strong>{item.title}</strong>
+                    <small>{item.description}</small>
+                  </span>
+                  <span className="solution-item-plus" aria-hidden="true">→</span>
+                </a>
+              ))}
+            </div>
           </article>
         ))}
       </div>
