@@ -1,10 +1,11 @@
 import { assetPath } from '../utils/asset';
+import { routePath } from '../utils/routes';
 
 export function Nav() {
   return (
     <nav className="site-nav" aria-label="Navegação principal">
       <div className="nav-inner">
-        <a className="brand" href="#hero" aria-label="Allmo">
+        <a className="brand" href={routePath()} aria-label="Allmo">
           <img
             className="brand-logo"
             src={assetPath('assets/logos/allmo-rgb.png')}
@@ -14,12 +15,12 @@ export function Nav() {
           />
         </a>
         <div className="nav-links" aria-label="Links principais">
-          <a href="#diferencial">Metodologia</a>
-          <a href="#solucoes">Soluções</a>
-          <a href="#cta">Diagnóstico</a>
-          <a href="#conteudo">Conteúdo</a>
+          <a href={routePath('metodologia')}>Metodologia</a>
+          <a href={routePath('#solucoes')}>Soluções</a>
+          <a href={routePath('dps')}>Diagnóstico</a>
+          <a href={routePath('#conteudo')}>Conteúdo</a>
         </div>
-        <a className="nav-cta" href="#cta">Iniciar Diagnóstico</a>
+        <a className="nav-cta" href={routePath('dps')}>Iniciar Diagnóstico</a>
       </div>
     </nav>
   );
